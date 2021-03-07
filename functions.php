@@ -49,5 +49,11 @@ function delete_intermediate_image_sizes( $sizes ){
 }
 
 if ( function_exists( 'add_image_size' ) ) {
+	
+	add_image_size( 'homepage-thumb', 65, 65, true ); // Кадрирование изображения
+}
+
+
+if ( function_exists( 'add_image_size' ) ) {
 	add_image_size( 'homepage-thumb', 65, 65, true ); // Кадрирование изображения
 }
