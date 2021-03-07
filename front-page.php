@@ -9,7 +9,7 @@
 
         $myposts = get_posts([ 
             'numberposts' => 1,
-            'category_name' => 'javascript',
+            'category_name' => 'javascript, css, html, web-design',
         ]);
           //проверяем, есть ли вообще посты?
         if( $myposts ){
@@ -31,7 +31,7 @@
        </a>
        <div class="post-text">
           <?php the_category(); ?>
-          <h2 class="post-title"><?php the_title(); ?></h2>
+          <h2 class="post-title"><?php echo mb_strimwidth( get_the_title(), 0, 60, '...') ?></h2>
           <a href="<?php echo get_the_permalink()?>" class="more">Читать далее</a>
 
        <!-- class="post-text" -->
@@ -60,7 +60,7 @@
             $myposts = get_posts([ 
                 'numberposts' => 5,
                 'offset' => 1,
-                
+                'javascript, css, html, web-design',
             ]);
               //проверяем, есть ли вообще посты?
             if( $myposts ){
@@ -72,7 +72,7 @@
                   <li class="post">
                     <?php the_category(); ?>
                     <a class="post-permalink" href="<?php echo get_the_permalink(); ?>">
-                       <h4 class="post-title"><?php the_title(); ?> </h4>
+                       <h4 class="post-title"><?php echo mb_strimwidth( get_the_title(), 0, 60, '...') ?></h4>
                     
                     </a>
                   </li>
@@ -96,26 +96,51 @@
      
     </div>
     <!-- class="hero" -->
-  
-
-           
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
  </div>
  <!-- class="container" -->
 </main>
+
+<div class="container">
+          <ul class="article-list">
+          <?php
+              //объявляем глобальную переменную
+            global $post;
+
+            $myposts = get_posts([ 
+                'numberposts' => 4,
+                'category_name' => 'articles',
+                
+            ]);
+              //проверяем, есть ли вообще посты?
+            if( $myposts ){
+                //если есть, запускаем цикл
+              foreach( $myposts as $post ){
+                  setup_postdata( $post );
+                  ?>
+                  <!-- выводим записи -->
+                  <li class="article-item">
+                    
+                    <a class="article-permalink" href="<?php echo get_the_permalink(); ?>">
+                       <h4 class="article-title"><?php echo mb_strimwidth(get_the_title(), 0, 50, '...') ?> </h4>
+                    
+                    </a>
+                    <img width="65" height="65" src="<?php echo get_the_post_thumbnail_url( null, 'thumbnail' ) ?>" alt="">
+                  </li>
+                  <?php 
+                    }
+                    } else {
+                    // Постов не найдено
+                    ?> <p> Постов нет</p> <?php
+                    }
+
+            wp_reset_postdata(); // Сбрасываем $post
+                    ?>
+       </ul>
+
+
+</div>
+<!-- class="container" -->
+
 
