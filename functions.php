@@ -36,9 +36,9 @@ add_action( 'after_setup_theme', 'universal_theme_setup' );
 function universal_theme_widgets_init() {
 	register_sidebar(
 		array(
-			'name'          => esc_html__( 'Сайдбар на главной', 'universal-example' ),
+			'name'          => esc_html__( 'Сайдбар на главной', 'universal-theme' ),
 			'id'            => 'main-sidebar',
-			'description'   => esc_html__( 'Добавьте виджеты сюда', 'universal-example' ),
+			'description'   => esc_html__( 'Добавьте виджеты сюда', 'universal-theme' ),
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</section>',
 			'before_title'  => '<h2 class="widget-title">',
