@@ -269,10 +269,15 @@
        </ul>
 <!-- /.article-grid -->
 <!-- Подключаем сайдбар -->
- <?php get_sidebar();?>
+ <?php get_sidebar('top');?>
+ <?php get_sidebar('bottom');?>
  </div>
 </div>
 <!-- class="container" -->
 
+<section class="investigation">
 
+
+</section>
+<!-- class="investigation" -->
 
